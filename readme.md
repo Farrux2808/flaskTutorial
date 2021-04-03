@@ -1,2 +1,1 @@
-# first project
-# test git hub
+# first Flask project

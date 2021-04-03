@@ -1,14 +1,17 @@
-import requests
+from flask import Flask
+import json
 
-headers = {'X-Api-Key': 'aabd2b6970694484a9a90e970cd037ba'}
-urlType = 'https://randommer.io/api/Card/Types'
-urlCard = 'https://randommer.io/api/Card'
-r = requests.get(urlType, headers=headers)
-data = r.json()
+app = Flask(__name__)
+
+@app.route('/')
+@app.route('/home')
+def hi():
+    return "Hello world"
+
+@app.route('/about')
+def about():
+    return "this is about page"
 
 
-params = {'type' : data[1]}
-r2 = requests.get(urlCard, params=params, headers=headers)
-data2 = r2.json()
-print(data2)
-
+if __name__ == "__main__":
+    app.run(port=None)
