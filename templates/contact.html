@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block body %}
+    <ul>
+        {% for contact in contacts %}
+        <li>name: {{contact.name}} tel: {{contact.tel}}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
