@@ -1,19 +1,33 @@
 from flask import Flask, request, render_template
 from jinja2 import Template
 import json
+from tinydb import TinyDB, Query
 
 app = Flask(__name__)
 
-
+db = TinyDB('db.json')
+table_products = db.table('products')
+productQuery = Query()
 
 @app.route('/')
 @app.route('/home')
 def home():
-    foydalanuvchi = {
-        "name": "Javohir",
-        "age": 10,
-    }
-    return render_template('home.html', user = foydalanuvchi)
+    products = table_products.all()
+    return render_template('home.html', products = products)
+
+@app.route('/product')
+def product():
+    r = request.args
+    product = table_products.search(productQuery.ID == r['id'])
+    return render_template('product.html', aaaa = product[0])
+
+
+
+
+
+
+
+
 
 @app.route('/about')
 def about():

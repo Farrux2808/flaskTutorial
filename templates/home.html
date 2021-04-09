@@ -1,11 +1,14 @@
 {% extends "base.html" %}
 
 {% block body %}
-    <h1>Salom {{user.name}}</h1>
-    {% if user.age > 18 %}
-    <h1>Yoshingiz 18dan katta</h1>
-    {% else %}
-    <h1>Yoshingiz 18dan Kichkina</h1>
-    {% endif %}
-    <h1>{{user.age}}</h1>
+<br>
+<ul>
+    {% for product in products %}
+       <li>
+           <a href="/product?id={{product.ID}}">
+                {{product.company}}
+           </a>
+        </li>
+    {% endfor %}
+</ul>
 {% endblock %}
